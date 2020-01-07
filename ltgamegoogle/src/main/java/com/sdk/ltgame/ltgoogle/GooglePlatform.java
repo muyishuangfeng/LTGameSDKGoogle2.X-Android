@@ -22,8 +22,8 @@ public class GooglePlatform extends AbsPlatform {
 
     private GoogleLoginHelper mGoogleHelper;
 
-    private GooglePlatform(Context context, String appId, String appName, String appKey, int target) {
-        super(context, appId, appName, appKey, target);
+    private GooglePlatform(Context context, String appId, String appKey, int target) {
+        super(context, appId, appKey, target);
     }
 
     /**
@@ -36,8 +36,8 @@ public class GooglePlatform extends AbsPlatform {
         public IPlatform create(Context context, int target) {
             IPlatform platform = null;
             LTGameOptions options = LTGameSdk.options();
-            if (!LTGameUtil.isAnyEmpty(options.getAppName(), options.getLtAppId(), options.getLtAppKey())) {
-                platform = new GooglePlatform(context, options.getLtAppId(), options.getAppName(),
+            if (!LTGameUtil.isAnyEmpty(options.getLtAppId(), options.getLtAppKey())) {
+                platform = new GooglePlatform(context, options.getLtAppId(),
                         options.getLtAppKey(), target);
             }
             return platform;
