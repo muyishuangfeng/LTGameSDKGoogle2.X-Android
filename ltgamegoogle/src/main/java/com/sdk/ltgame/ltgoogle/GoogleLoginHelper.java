@@ -29,14 +29,12 @@ public class GoogleLoginHelper {
     private String clientID;
     public int selfRequestCode;
     private String adID;
-    private boolean isStats;
 
-    GoogleLoginHelper(Activity activity, String clientID, String adID, boolean isStats,
+    GoogleLoginHelper(Activity activity, String clientID, String adID,
                       int selfRequestCode, OnLoginStateListener listener) {
         this.mActivityRef = new WeakReference<>(activity);
         this.clientID = clientID;
         this.adID = adID;
-        this.isStats = isStats;
         this.selfRequestCode = selfRequestCode;
         this.mListener = listener;
         this.mLoginTarget = Target.LOGIN_GOOGLE;
@@ -75,7 +73,7 @@ public class GoogleLoginHelper {
             if (account != null) {
                 String idToken = account.getIdToken();
                 if (!TextUtils.isEmpty(idToken)) {
-                    LoginRealizeManager.googleLogin(mActivityRef.get(), idToken, isStats, mListener);
+                    LoginRealizeManager.googleLogin(mActivityRef.get(), idToken,  mListener);
                 } else {
                     mListener.onState(mActivityRef.get(), LoginResult.failOf(LTGameError.make("Google user token is empty")));
                 }
