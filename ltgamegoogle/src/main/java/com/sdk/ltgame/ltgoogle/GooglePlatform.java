@@ -74,7 +74,7 @@ public class GooglePlatform extends AbsPlatform {
     @Override
     public void login(Activity activity, int target, LoginObject object, OnLoginStateListener listener) {
         mGoogleHelper = new GoogleLoginHelper(activity, object.getmGoogleClient(), object.getmAdID(),
-                object.getSelfRequestCode(), listener);
+                object.getStats(), object.getSelfRequestCode(), listener);
         if (object.isLoginOut()) {
             mGoogleHelper.loginOut(activity, object.getmGoogleClient());
         } else {
